@@ -66,8 +66,10 @@ def index():
     form = SearchForm()
     last_update = datetime.today().strftime('%Y-%m-%d')
     if request.method == 'POST':
+        return redirect('/zipcodes/'+str(form.query.data))
         if form.validate():
-            return render_template('search.html', info = get_info(), post = 'yup', form = form)
+            return redirect('/zipcodes/'+str(form.query.data))
+            # render_template('search.html', info = get_info(), post = 'yup', form = form)
     elif request.method == 'GET':
         return render_template('search.html', info = get_info(), form = form, last_update = last_update)
 

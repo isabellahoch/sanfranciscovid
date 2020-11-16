@@ -67,7 +67,7 @@
 <!--           </div> -->
       <form action="/" method="post" class="d-flex justify-content-center p-2" novalidate>
         <div class="searchbar">
-          {{ form.link(class_="search_input", _name="", placeholder="Search by zipcode or neighborhood...") }}
+          {{ form.query(class_="search_input", _name="", placeholder="Search by zipcode...") }}
          <!--  <input type="text" name="" class="search_input" placeholder="Search..."> -->
           <a onclick="this.closest('form').submit();return false;" class="search_icon"><i class="fas fa-search"></i></a>
           </div>
