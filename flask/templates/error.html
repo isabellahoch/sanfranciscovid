@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} | SanFrancisCOVID{% endblock %}
+{% block content %}
+<div class="container">
+	<section class="heading">
+        <h1 style="font-size:36px">Oops!</h1>
+  </section>
+	<div class="row">
+		<div class="col-8">
+			<h2>{{ message }}</h2>
+			<br>
+			<p>Error code: {{ code }}</p>
+			<p>Here are some helpful links instead.</p>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<!-- <li><a href="/sections">Sections</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/contact">Contact</a></li> -->
+			</ul>
+		</div>
+		<div class="col-4">
+			<img src="https://a0.muscache.com/airbnb/static/error_pages/404-Airbnb_final-d652ff855b1335dd3eedc3baa8dc8b69.gif">
+			<br>
+			<span>(gif courtesy of our friends at <a class="link" href="https://www.airbnb.com/">Airbnb</a>)</span>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block head %}
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+<style>
+.col-8{
+	-webkit-box-flex: 0;
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+}
+
+.col-4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block head %}
+<link href="https://fonts.googleapis.com/css2?family=Allan:wght@700&family=Monoton&family=Raleway+Dots&family=Open+Sans+Condensed:ital,wght@1,300&display=swap" rel="stylesheet">
+<style>
+
+    body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #dff0f2 !important;
+    }
+
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:#f6def6;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    }
+</style>
+{% endblock %}
+{% block title %}Fight Fast Fashion | find ethical slow fashion alternatives to fast fashion items!{% endblock %}
+{% block content %}
+<div class="container h-100 d-flex flex-column mb-3 justify-content-center">
+<!--       <div class="d-flex justify-content-center h-100">
+      <div class="row text-center align-items-center justify-content-center" style="min-width:fit-content"> -->
+            <div class="justify-content-center align-items-center text-center p-2">
+              <h1 style="font-family: 'Abril Fatface', cursive;">San FrancisCOVID</h1>
+              <h2 style="font-style:italic; font-family: 'Open Sans Condensed', sans-serif;">COVID-19 data (last updated {{ last_update }})</h2>
+            </div>
+<!--           </div> -->
+      <form action="/" method="post" class="d-flex justify-content-center p-2" novalidate>
+        <div class="searchbar">
+          {{ form.link(class_="search_input", _name="", placeholder="Search by zipcode or neighborhood...") }}
+         <!--  <input type="text" name="" class="search_input" placeholder="Search..."> -->
+          <a onclick="this.closest('form').submit();return false;" class="search_icon"><i class="fas fa-search"></i></a>
+          </div>
+      </form>
+      </div>
+    </div>
+{% endblock %}
+{% block js %}
+<script>
+$( document ).ready(function() {
+    $('#nav').hide()
+});
+</script>
+{% endblock %}

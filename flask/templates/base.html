@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="{% block description %}{% endblock %}">
+        <meta name="keywords" content="covid-19, san francisco, san franciscovid, sanfranciscovid, sf, sf covid data, {% block keywords %}{% endblock %}">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Comfortaa|Lobster+Two|Luckiest+Guy|Poiret+One|Sigmar+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Abril+Fatface&family=Montserrat&family=Raleway&family=Roboto&family=Zilla+Slab+Highlight:wght@700&family=Lobster&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <style>body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #dff0f2 !important;
+    font-family: 'Montserrat', sans-serif;
+    }
+    h1,h2,h3,h4,h5 {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    * {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .btn-custom {
+    color: #000;
+    background-color: #f6def6 !important;
+    border-color: #f6def6 !important;
+}
+a {
+    color: #03e4ff !important;
+}
+</style>
+
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-light bg-light text-center align-items-center justify-content-center" id="nav">
+          <a class="navbar-brand" href="/" style="font-size:20pt; font-family: 'Quicksand', sans-serif;">
+            SanFrancisCOVID
+          </a>
+        </nav>
+        <div class="container-fluid" style="padding:5%">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <!-- Footer -->
+        <footer class="page-footer font-small pt-4" style="padding:5%">
+
+          <!-- Footer Links -->
+          <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+              <!-- Grid column -->
+              <div class="col-md-6 mt-md-0 mt-3">
+
+                <!-- Content -->
+                <h5 class="text-uppercase">Contribute to SanFrancisCOVID!</h5>
+                <p>This web app is open source and we welcome any contributors. See GitHub link below.</p>
+                <!-- Begin Mailchimp Signup Form -->
+                <!-- <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+                <style type="text/css">
+                    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+                    /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+                       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+                </style>
+                <div id="mc_embed_signup">
+                <form action="https://fightfastfashion.us10.list-manage.com/subscribe/post?u=7d685e57c3a4ca3cb77f46f11&amp;id=094e290050" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" style="background-color:#cff6cf; padding:10px" novalidate>
+                    <div id="mc_embed_signup_scroll" class="form-group" style="margin-bottom:0px">
+                        <div class="input-group">
+                            <input type="email" value="" name="EMAIL" class="email form-control" style="font-family:Montserrat" id="mce-EMAIL" placeholder="email address" required>
+                            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-custom" style="font-family:Montserrat">
+                        </div>
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_7d685e57c3a4ca3cb77f46f11_094e290050" tabindex="-1" value=""></div>
+                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-custom"></div>
+                    </div>
+                </form>
+                </div> -->
+
+                <!--End mc_embed_signup-->
+                <a href="https://github.com/isabellahoch/sanfranciscovid"><img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" height="40"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" height="40"></a>
+
+              </div>
+              <!-- Grid column -->
+
+              <hr class="clearfix w-100 d-md-none pb-3">
+
+              <!-- Grid column -->
+              <div class="col-md-3 mb-md-0 mb-3">
+
+                <h5 class="text-uppercase">Contact</h5>
+                <p>Please email <a href="mailto:isabellahochschild@gmail.com">isabellahochschild@gmail.com</a> with any concerns or media requests.</p>
+
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-3 mb-md-0 mb-3">
+
+                <!-- Links -->
+                <h5 class="text-uppercase">BE INFORMED</h5>
+
+                <ul class="list-unstyled">
+                  {% for source in info.sources %}
+                  <li>
+                    <a href="{{ source.website }}">{{ source.name }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+
+              </div>
+              <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+          </div>
+          <!-- Footer Links -->
+
+          <!-- Copyright -->
+          <div class="footer-copyright text-center py-3">© <span id="copyright_year">2020</span> Copyright:
+            <a href="/"> SanFrancisCOVID</a>
+          </div>
+          <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
+        <script>
+var date = new Date();
+var year = date.getFullYear();  
+document.getElementById("copyright_year").innerHTML = year.toString();
+</script>
+<script>
+  console.log('heyyyy')
+  $(".nav-link").each(function() {
+    console.log(($(this).attr("id"));
+    if ($(this).hasClass("active")) {
+      console.log(($(this).attr("id")));
+    }
+  });
+</script>
+        {% block js %}
+        {% endblock %}
+    </body>
+</html>
