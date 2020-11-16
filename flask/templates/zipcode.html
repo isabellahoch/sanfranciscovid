@@ -6,7 +6,7 @@
         <li><strong>Population: </strong>{{ data['acs_population'] }}</li>
         <li><strong>Count: </strong>{{ data.count }}</li>
         <li><strong>Rate (per 10,000 residents): </strong>{{ data.rate }}</li>
-        <li><strong>Deaths: </strong>{{ data.deaths }}</li>
+        <li><strong>Deaths: </strong>{% if data.deaths %}{{ data.deaths }}{% else %}0.0{% endif %}</li>
     </ul>
 </div>
 {% endblock %}
