@@ -75,7 +75,7 @@ def index():
 
 @app.route('/zipcodes/<zipcode_id>')
 def get_data_by_zipcode(zipcode_id):
-    results = client.get("tpyr-dvnc", id=94115, limit=2000)
+    results = client.get("tpyr-dvnc", id=zipcode_id, limit=2000)
     return render_template('zipcode.html', data = results[0], info = get_info())
 
 @app.route('/google1ec94f20b076cf81.html')
