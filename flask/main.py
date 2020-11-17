@@ -34,11 +34,13 @@ Compress(app)
 app.config['SECRET_KEY'] = os.urandom(24)
 
 def get_info():
-    info = {}
-    info["sources"] = []
-    info["sources"].append({"name":"CDC COVID Dashboard","website":"https://www.cdc.gov/coronavirus/2019-ncov/index.html"})
-    info["sources"].append({"name":"CDC U.S. COVID Data Tracker","website":"https://covid.cdc.gov/covid-data-tracker/#cases_totalcases"})
-    return info
+	info = {}
+	info["sources"] = []
+	info["sources"].append({"name":"CDC COVID Dashboard","website":"https://www.cdc.gov/coronavirus/2019-ncov/index.html"})
+	info["sources"].append({"name":"CDC U.S. COVID Data Tracker","website":"https://covid.cdc.gov/covid-data-tracker/#cases_totalcases"})
+	info["sources"].append({"name":"DataSF COVID-19 Data and Reports","website":"https://data.sfgov.org/stories/s/fjki-2fab"})
+	info["sources"].append({"name":"Send a Virtual Hug","website":"http://sendavirtualhug.com"})
+	return info
 
 
 @app.errorhandler(404)
@@ -71,20 +73,42 @@ def index():
     #     zip_codes.append(result["zip"])
     #     zip_codes_info.append({"zip":result["zip"],"name":result["po_name"]})
     # print(zip_codes)
-    form = SearchForm()
-    last_update = datetime.today().strftime('%Y-%m-%d')
-    if request.method == 'POST':
-        return redirect('/zipcodes/'+str(form.query.data))
-        if form.validate():
-            return redirect('/zipcodes/'+str(form.query.data))
-            # render_template('search.html', info = get_info(), post = 'yup', form = form)
-    elif request.method == 'GET':
-        return render_template('search.html', info = get_info(), form = form, last_update = last_update)
+	data = {"total_cases":0}
+	results = client.get("tvq9-ec9w", limit=3)
+	for result in results:
+		data[result["transmission_category"].lower()] = result["case_count"]
+		data["total_cases"] = data["total_cases"] + int(result["case_count"])
+		data["last_updated_at"] = result["specimen_collection_date"].split("T")[0][5:].replace("-","/")
+	if "unknown" not in data:
+		data['unknown'] = 0
+	if "community" not in data:
+		data['community'] = 0
+	if "from contact" not in data:
+		data['contact'] = 0
+	else:
+		data['contact'] = data['from contact']
+	form = SearchForm()
+	last_update = datetime.today().strftime('%Y-%m-%d')
+	if request.method == 'POST':
+		return redirect('/zipcodes/'+str(form.query.data))
+		if form.validate():
+			return redirect('/zipcodes/'+str(form.query.data))
+			# render_template('search.html', info = get_info(), post = 'yup', form = form)
+	elif request.method == 'GET':
+		return render_template('search.html', info = get_info(), form = form, last_update = last_update, data = data)
 
 @app.route('/zipcodes/<zipcode_id>')
 def get_data_by_zipcode(zipcode_id):
     results = client.get("tpyr-dvnc", id=zipcode_id, limit=2000)
     return render_template('zipcode.html', data = results[0], info = get_info())
+
+@app.route('/new-cases-map')
+def new_cases_map():
+    return render_template('map.html', info = get_info())
+
+@app.route('/graph')
+def cumulative_graph():
+    return render_template('graph.html', info = get_info())
 
 @app.route('/google1ec94f20b076cf81.html')
 def google_site_verification():

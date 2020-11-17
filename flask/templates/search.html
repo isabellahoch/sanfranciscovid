@@ -73,8 +73,61 @@
           </div>
       </form>
       </div>
-      <iframe style="width:100%; height:90vh" width="100%" height="100%" marginheight="0" frameborder="0" border="0" scrolling="auto" onload="autoResize(this);"src="https://sa-storyteller-cust-us-east-1-fedramp-prod.s3.amazonaws.com/documents/uploads/000/568/847/original/data?1592003669">your browser does not support iframes</iframe>
-    </div>
+      <div class="container align-items-center justify-content-center text-center" style="padding:50px">
+        <div class="card-deck mb-3 align-items-center justify-content-center text-center">
+            <h1 style="width:100%"><span class="timer count-title count-number" data-to="{{ data.total_cases }}" data-speed="1500" style="font-family: 'Raleway', sans-serif;"></span> new cases*</h1><br><h4 style="width:100%" class="text-muted">(last updated {{ data.last_updated_at }})</h4>
+          </div>
+      </div>
+      <div class="container">
+        <div class="card-deck mb-3 text-center">
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Community</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">{{ data.community }} <small class="text-muted">(as of {{ data.last_updated_at }})</small></h1>
+              <!-- <ul class="list-unstyled mt-3 mb-4">
+                <li>10 users included</li>
+                <li>2 GB of storage</li>
+                <li>Email support</li>
+                <li>Help center access</li>
+              </ul>
+              <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button> -->
+            </div>
+          </div>
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">From Contact</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">{{ data.contact }} <small class="text-muted">(as of {{ data.last_updated_at }})</small></h1>
+              <!-- <ul class="list-unstyled mt-3 mb-4">
+                <li>20 users included</li>
+                <li>10 GB of storage</li>
+                <li>Priority email support</li>
+                <li>Help center access</li>
+              </ul>
+              <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button> -->
+            </div>
+          </div>
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Unknown</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">{{ data.unknown }} <small class="text-muted">(as of {{ data.last_updated_at }})</small></h1>
+              <!-- <ul class="list-unstyled mt-3 mb-4">
+                <li>30 users included</li>
+                <li>15 GB of storage</li>
+                <li>Phone and email support</li>
+                <li>Help center access</li>
+              </ul>
+              <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
 {% endblock %}
 {% block js %}
 <script>
@@ -86,5 +139,107 @@ $( document ).ready(function() {
     function autoResize(iframe) {
     $(iframe).height($(iframe).contents().find('html').height());
 }
+</script>
+
+
+<script>
+  (function ($) {
+$.fn.countTo = function (options) {
+  options = options || {};
+  
+  return $(this).each(function () {
+    // set options for current element
+    var settings = $.extend({}, $.fn.countTo.defaults, {
+      from:            $(this).data('from'),
+      to:              $(this).data('to'),
+      speed:           $(this).data('speed'),
+      refreshInterval: $(this).data('refresh-interval'),
+      decimals:        $(this).data('decimals')
+    }, options);
+    
+    // how many times to update the value, and how much to increment the value on each update
+    var loops = Math.ceil(settings.speed / settings.refreshInterval),
+      increment = (settings.to - settings.from) / loops;
+    
+    // references & variables that will change with each update
+    var self = this,
+      $self = $(this),
+      loopCount = 0,
+      value = settings.from,
+      data = $self.data('countTo') || {};
+    
+    $self.data('countTo', data);
+    
+    // if an existing interval can be found, clear it first
+    if (data.interval) {
+      clearInterval(data.interval);
+    }
+    data.interval = setInterval(updateTimer, settings.refreshInterval);
+    
+    // initialize the element with the starting value
+    render(value);
+    
+    function updateTimer() {
+      value += increment;
+      loopCount++;
+      
+      render(value);
+      
+      if (typeof(settings.onUpdate) == 'function') {
+        settings.onUpdate.call(self, value);
+      }
+      
+      if (loopCount >= loops) {
+        // remove the interval
+        $self.removeData('countTo');
+        clearInterval(data.interval);
+        value = settings.to;
+        
+        if (typeof(settings.onComplete) == 'function') {
+          settings.onComplete.call(self, value);
+        }
+      }
+    }
+    
+    function render(value) {
+      var formattedValue = settings.formatter.call(self, value, settings);
+      $self.html(formattedValue);
+    }
+  });
+};
+
+$.fn.countTo.defaults = {
+  from: 0,               // the number the element should start at
+  to: 0,                 // the number the element should end at
+  speed: 10000,           // how long it should take to count between the target numbers
+  refreshInterval: 100,  // how often the element should be updated
+  decimals: 0,           // the number of decimal places to show
+  formatter: formatter,  // handler for formatting the value before rendering
+  onUpdate: null,        // callback method for every time the element is updated
+  onComplete: null       // callback method for when the element finishes updating
+};
+
+function formatter(value, settings) {
+  return value.toFixed(settings.decimals);
+}
+}(jQuery));
+
+jQuery(function ($) {
+// custom formatting example
+$('.count-number').data('countToOptions', {
+formatter: function (value, options) {
+  return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+}
+});
+
+// start all the timers
+$('.timer').each(count);  
+
+function count(options) {
+var $this = $(this);
+options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+$this.countTo(options);
+}
+});
 </script>
 {% endblock %}
