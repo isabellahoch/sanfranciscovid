@@ -3,6 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, Form, SelectField, SubmitField, BooleanField, FieldList, FormField, TimeField, RadioField
 from wtforms.widgets import TextArea
 from flask_compress import Compress
+from data import spreadsheet
 
 try:
 	# for internal server
@@ -63,6 +64,13 @@ def internal_server_error(e):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    # results = client.get("f9wk-m4qb")
+    # zip_codes = []
+    # zip_codes_info = []
+    # for result in results:
+    #     zip_codes.append(result["zip"])
+    #     zip_codes_info.append({"zip":result["zip"],"name":result["po_name"]})
+    # print(zip_codes)
     form = SearchForm()
     last_update = datetime.today().strftime('%Y-%m-%d')
     if request.method == 'POST':

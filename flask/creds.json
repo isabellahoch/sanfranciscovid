@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sanfranciscovid",
+  "private_key_id": "65c99dfc61b278f03fcba87f556b54d624dba22b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCgw2rfDcVde69F\nf841n0YpYFAjYtm7YBmUymg40K4dwuWZOc+4ZE+K49BqEit4/SUv78h/ZmKiJLHX\n7gBL8MjELZMuuVw1WkYz/RBI1+NnlRpVgRX0ceDLnnhJ8koDaczdm8jE5/6MNQQF\nhYA4i6AdUHu1yuh6F7WF4enlwRCaUT2zUE8vdryn37kQEh7uuS64PXqewdFePoBY\nUQhtv7xo4QnTGcBACxPAde2ELbC84aMo7X4HAJx84igfH3ZZy9C+rTKSSIDsH6Ji\nmhdC3w+scokckXFP/Bg8pHMGFdvU4jT+zlUTYXMhsU8BQBe7KfSYH83XvMU+CllO\nnpatvbNXAgMBAAECggEAEw8ilBp+2UFjmyVhc3api8LmXVDyfUYRt6keHWDoHjvP\n7+WBsdulQ9MUZK7jcS7vLLVhxhuDpV4c/iYyP3k8Dr3/IrKeXZjmlR1Ibp+2+b3H\nPHcsUimku/R9UE765VgIDgcnuz3B2NTO4D9eidWhKuMyzMT8i2pU0/A07vnU7REf\n2WqqY0kQ3sp/DPpm2H5GXg+Jin26DSipIiuoCXIeWckz5GVyieP8qnYVfhQfEbXu\nW0F2CtnzzfPJbSZ1uamD6ssuGNr0R+NNwYMIlTspdD+ckjcjUeTQBKYDsNuhHEmg\nrgHpgjygl4ZsGYG3C8OEwEOGQ/wnjplrH1b25Nz0EQKBgQDMGOq5ILbN9D4fVx1i\naH33crpn5oamns7dTG4QG5Gsj/IpA4q980ide5I9rMX4MUjZiMl2Q5c46zfYSDow\nTvogyUCTO22IEBORsce7402z/nY+kx7jFR/3BGIgme/L7aohIizBHduPa8VY+k6i\n4oRmqzGEgWTU0GKVn1jzQp9lCQKBgQDJpWJ8BNE23/qiCCkena0Azq4sDmTcsjuw\ncKwlyWp8RgeiGcquXlY9hEp0ihwAAWYyv17/ov2JkqrN+tt4UWBNjYi1kUWI1uB8\nYkpBAXPyAsKdcP+JQ72ceff06EyzcOi6Mtlorn4CaetyPCDfj+kSOLQgKuoSDhgV\nosrobffNXwKBgQDBIdL73DkgKz+d6JGlzbtlrOs35q0EfsLCJtD/7RasdIpyxSdF\nGDJe09BPDG9JrVmCgC4j+1HeSrdNswtdK18GJ2sz58h+OLhL5i9bXHzrFqBOFmnj\n+NmGpl80+nYwQ3X6ZJx1Igvia9kTmclP2YnwnY7+FHOV7ptbeq5xg1nSAQKBgQC7\nt5zRO2LQpP4b7WDqQXsWr1Fxbgzzb3Elth5sJu9ctYzRmRUX8nZyWj898nxSfPr4\n7zKu5LsGYWVkz82UWp0+VS4ZaR3EX9UnthDOJ14aw/sMum8JB+jyTJFKix8sRUZC\nYKgITbi84oHvHI610LD255a4A3tYR4qgSaZ/bjAsHQKBgDybHO3KHsFU0EqoF5f9\nWocq11TYzn4/XR4yillKuIJvnLEQL0Ji2Db8jQ+4EhcWGw/REHor9fsSgiu9lSWj\nnmkywW6TLvwJgitj5QYBM7/lrI1gzYKxIATLJYzcFoT3VDDwqgI/t4TQ/TtngP1v\nzNJzrZeQItTdcq5zo5DT0C+6\n-----END PRIVATE KEY-----\n",
+  "client_email": "admin-94@sanfranciscovid.iam.gserviceaccount.com",
+  "client_id": "105226098821603373068",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/admin-94%40sanfranciscovid.iam.gserviceaccount.com"
+}
