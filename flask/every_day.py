@@ -23,11 +23,11 @@ def update_data():
     for zip in zipcodes:
         try:
             new_worksheet = spreadsheet.worksheet(zip)
-            if len(new_worksheet.get_all_values()) == 4:
+            if len(new_worksheet.get_all_values()) <= 4:
                 results = client.get("tpyr-dvnc", id=zip)
                 if results:
                     results = results[0]
-                    results["count"] = float(results["count"].strip().split(".")[0])
+                    results["count"] = float(results["count"].strip().split(".")[0].replace(",",""))
                     if new_worksheet.acell('B1').value:
                         results["delta"] = results["count"] - float(new_worksheet.acell('B2').value.strip())
                     else:
