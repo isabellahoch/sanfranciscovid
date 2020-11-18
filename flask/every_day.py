@@ -56,7 +56,7 @@ def update_data():
                     running_total["deaths"] = running_total["deaths"] + float(results['deaths'])
                     running_total["acs_population"] = running_total["acs_population"] + float(results['acs_population'])
                     time.sleep(50)
-            sheet = spreadsheet.worksheet("Master")]
+            sheet = spreadsheet.worksheet("Master")
             running_total["delta"] = running_total["count"] - float(sheet.acell('B2').value.strip())
             results = running_total
             new_worksheet = sheet
