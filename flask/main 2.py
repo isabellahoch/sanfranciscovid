@@ -250,13 +250,6 @@ def data():
     results = client.get("tpyr-dvnc", id=94115, limit=2000)
     return render_template('data.html', data = results)
 
-from every_day import *
-
-@app.route('/daily-update')
-def daily_update():
-	update_data()
-	return redirect('/')
-
 @app.route('/sitemap.xml', methods=['GET'])
 def sitemap():
     """Generate sitemap.xml """
