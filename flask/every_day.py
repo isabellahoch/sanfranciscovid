@@ -23,52 +23,51 @@ def update_data():
     for zip in zipcodes:
         try:
             new_worksheet = spreadsheet.worksheet(zip)
-            if len(new_worksheet.get_all_values()) <= 4:
-                results = client.get("tpyr-dvnc", id=zip)
-                if results:
-                    results = results[0]
-                    results["count"] = float(results["count"].strip().split(".")[0].replace(",",""))
-                    if new_worksheet.acell('B1').value:
-                        results["delta"] = results["count"] - float(new_worksheet.acell('B2').value.strip())
-                    else:
-                        results["delta"] = "-"
-                    if "deaths" not in results:
-                        results["deaths"] = 0.0
-                    if "count" not in results:
-                        results["count"] = 0.0
-                        results["rate"] = 0.0
-                    if "last_updated_at" in results:
-                        results["datetime"] = datetime.strptime(results["last_updated_at"],"%Y-%m-%dT%H:%M:%S.%f")
-                        results["date"] = results["datetime"].isoformat()
-                    new_worksheet.append_row([results['date'],results['count'],results['rate'],float(results['rate'])/100,results['deaths'],results["delta"],results['acs_population'],results['last_updated_at'],results['area_type'],results['id']])
-                    new_worksheet.update('B2', results['count'])
-                    new_worksheet.update('C2', results['rate'])
-                    new_worksheet.update('D2', float(results['rate'])/100)
-                    new_worksheet.update('E2', results['deaths'])
-                    new_worksheet.update('F2', results['delta'])
-                    new_worksheet.update('G2', results['acs_population'])
-                    new_worksheet.update('H2', results['last_updated_at'])
-                    new_worksheet.update('I2', results['area_type'])
-                    new_worksheet.update('J2', results['id'])
-                    new_worksheet.format('A1:J1', {'textFormat': {'bold': True}})
-                    new_worksheet.format('A1:A', {'textFormat': {'bold': True}})
-                    running_total["count"] = running_total["count"] + float(results['count'])
-                    running_total["deaths"] = running_total["deaths"] + float(results['deaths'])
-                    running_total["acs_population"] = running_total["acs_population"] + float(results['acs_population'])
-                    time.sleep(50)
-            sheet = spreadsheet.worksheet("Master")
-            running_total["delta"] = running_total["count"] - float(sheet.acell('B2').value.strip())
-            results = running_total
-            new_worksheet = sheet
-            new_worksheet.update('B2', results['count'])
-            new_worksheet.update('C2', results['rate'])
-            new_worksheet.update('D2', float(results['rate'])/100)
-            new_worksheet.update('E2', results['deaths'])
-            new_worksheet.update('F2', results['delta'])
-            new_worksheet.update('G2', results['acs_population'])
-            new_worksheet.update('H2', results['last_updated_at'])
-            new_worksheet.append_row([results['date'],results['count'],results['rate'],float(results['rate'])/100,results['deaths'],results["delta"],results['acs_population'],results['last_updated_at']])
-            sheet.format('A1:A', {'textFormat': {'bold': True}})
+            results = client.get("tpyr-dvnc", id=zip)
+            if results:
+                results = results[0]
+                results["count"] = float(results["count"].strip().split(".")[0].replace(",",""))
+                if new_worksheet.acell('B1').value:
+                    results["delta"] = results["count"] - float(new_worksheet.acell('B2').value.strip())
+                else:
+                    results["delta"] = "-"
+                if "deaths" not in results:
+                    results["deaths"] = 0.0
+                if "count" not in results:
+                    results["count"] = 0.0
+                    results["rate"] = 0.0
+                if "last_updated_at" in results:
+                    results["datetime"] = datetime.strptime(results["last_updated_at"],"%Y-%m-%dT%H:%M:%S.%f")
+                    results["date"] = results["datetime"].isoformat()
+                new_worksheet.append_row([results['date'],results['count'],results['rate'],float(results['rate'])/100,results['deaths'],results["delta"],results['acs_population'],results['last_updated_at'],results['area_type'],results['id']])
+                new_worksheet.update('B2', results['count'])
+                new_worksheet.update('C2', results['rate'])
+                new_worksheet.update('D2', float(results['rate'])/100)
+                new_worksheet.update('E2', results['deaths'])
+                new_worksheet.update('F2', results['delta'])
+                new_worksheet.update('G2', results['acs_population'])
+                new_worksheet.update('H2', results['last_updated_at'])
+                new_worksheet.update('I2', results['area_type'])
+                new_worksheet.update('J2', results['id'])
+                new_worksheet.format('A1:J1', {'textFormat': {'bold': True}})
+                new_worksheet.format('A1:A', {'textFormat': {'bold': True}})
+                running_total["count"] = running_total["count"] + float(results['count'])
+                running_total["deaths"] = running_total["deaths"] + float(results['deaths'])
+                running_total["acs_population"] = running_total["acs_population"] + float(results['acs_population'])
+                time.sleep(50)
         except Exception as e:
             print(zip)
             print(e)
+    sheet = spreadsheet.worksheet("Master")
+    running_total["delta"] = running_total["count"] - float(sheet.acell('B2').value.strip())
+    results = running_total
+    new_worksheet = sheet
+    new_worksheet.update('B2', results['count'])
+    new_worksheet.update('C2', results['rate'])
+    new_worksheet.update('D2', float(results['rate'])/100)
+    new_worksheet.update('E2', results['deaths'])
+    new_worksheet.update('F2', results['delta'])
+    new_worksheet.update('G2', results['acs_population'])
+    new_worksheet.update('H2', results['last_updated_at'])
+    new_worksheet.append_row([results['date'],results['count'],results['rate'],float(results['rate'])/100,results['deaths'],results["delta"],results['acs_population'],results['last_updated_at']])
+    sheet.format('A1:A', {'textFormat': {'bold': True}})
